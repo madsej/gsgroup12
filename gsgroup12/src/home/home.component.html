@@ -1,1 +1,24 @@
-<p>home works!</p>
+<!-- Investment Calculator -->
+<section class="investment-calculator">
+    <h2>Investment Calculator</h2>
+  
+    <label for="funds">Choose a Mutual Fund:</label>
+    <select id="funds" [(ngModel)]="selectedTicker" (change)="fetchBetaValue()">
+      <option *ngFor="let fund of mutualFunds" [value]="fund.ticker">
+        {{ fund.name }} ({{ fund.ticker }})
+      </option>
+    </select>
+  
+    <label for="principal">Initial Investment ($):</label>
+    <input type="number" id="principal" [(ngModel)]="principal" placeholder="Enter amount" />
+  
+    <label for="years">Investment Duration (Years):</label>
+    <input type="number" id="years" [(ngModel)]="years" placeholder="Enter years" />
+  
+    <button class="calculate-btn" (click)="calculateInvestment()">Calculate</button>
+  
+    <div class="future-value" *ngIf="futureValue !== null">
+      <h3>Future Value: ${{ futureValue | number:'1.2-2' }}</h3>
+    </div>
+  </section>
+  
